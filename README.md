@@ -3,7 +3,7 @@ McFadyen Fullstack Challenge - Backend
 
 
 [![Build Status](https://travis-ci.org/nezkal/mcfadyen.svg?branch=master)](https://travis-ci.org/nezkal/mcfadyen)
-
+[![Coverage Status](https://coveralls.io/repos/github/nezkal/mcfadyen/badge.svg)](https://coveralls.io/github/nezkal/mcfadyen)
 
 How to install this project
 
