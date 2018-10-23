@@ -1,8 +1,13 @@
 language: java
 jdk: oraclejdk8
-
 services:
-  - docker
-
+- docker
 after_success:
-  - ./mvnw clean test jacoco:report coveralls:report
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- ./mvnw install dockerfile:build
+- docker push nezkal/mc_challenge
+- "./mvnw clean test jacoco:report coveralls:report"
+env:
+  DOCKER_LOGIN: nezkal
+  DOCKER_PASSWORD:
+    secure: j4D9l23Udg4M7FnPFxvVD03+VLKRYWsuxTd9o9Q4hVkKCCE2g0MM8q0eP44QXWWN2KqEUwlUUVwmP9Jod1ZoMQ4xh3moYq/Ug5hqvsRm69fiOcUZGjmGzVjXEpBEwz+81NrNIYXcFWrlV3wnAT5tK2i5eWSjP4Ygb8oDx+JwYbFjCP8a2VjwEpmZseCGxQ0zqIrmSBup1Fox32BuyWKMi81fIn0zqu5zFRomU4N6sb65Sb9lWNFWNofY2ERSSqU74UWkSQwRuFEmpyVbsn5yeNdKWt9wv9JqyTVN/WlJrcX4KhpAKE1/bK/opTDRhP7iogXxxzvaTWeFqEQ2/f77EnL2/UbHK5/JhPxzN/1c/5Qnj81BSX4bIWrqjIdiXvepv+ht9NEPSXLFnyzFoJf+NuFP9+h/TSm8T7SMn9/Q5qG6echQArznFGkirJ162amUCmAZORxlwupw2v6cuJBHxX17TuYzz13ktT6RlFnnlQSu93Z+QNv5zMF1gjotZCjEvuD0mg5FO2XERsi9tbFpprITsFuUQs6HNL0v20F5jNjE76ypcGrug6lu+shvY887vdVhJju37kKeIz0uKqfLiVObl5c4NGsnhv391JjxsggDB/DaKEiPp41+09wKFRusDiX9w3T4m+79XCLPDdBqHLowP+vTOjuTMA2s9wb1lFU=
