@@ -3,7 +3,3 @@ jdk: oraclejdk8
 
 services:
   - docker
-
-after_deploy:
-  - ./mvnw install dockerfile:build
-  - docker run -p 8080:8080 -t nezkal/mc_challenge
