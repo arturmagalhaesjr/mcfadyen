@@ -11,6 +11,7 @@ public class ChallengeApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		ChallengeApplication.main(new String[] {});
 	}
 
 }
