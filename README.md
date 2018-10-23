@@ -10,7 +10,7 @@ McFadyen Fullstack Challenge - Backend
 [![CI Diagram](https://raw.githubusercontent.com/nezkal/mcfadyen/master/McFadyenCI.png)](https://raw.githubusercontent.com/nezkal/mcfadyen/master/McFadyenCI.png)
 
 
-#How to install:
+How to install:
 
 ## Maven
 
