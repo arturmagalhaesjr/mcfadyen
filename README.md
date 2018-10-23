@@ -37,3 +37,4 @@ After that, the Docker's image will be created on **prefix/artifactId**
 So, you can push by docker push <prefix/artifactId> or run the container: ``` docker run -p 8080:8080 -t prefix/artifactId ```
 
 Thanks
+
