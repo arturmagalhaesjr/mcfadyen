@@ -16,10 +16,6 @@ public class ShoppingCart {
         return commerceItems;
     }
 
-    public void setCommerceItems(ArrayList<CommerceItem> commerceItems) {
-        this.commerceItems = commerceItems;
-    }
-
     /**
      * Push the commerceItem into array
      *
