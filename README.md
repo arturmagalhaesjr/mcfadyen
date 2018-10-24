@@ -10,7 +10,11 @@ McFadyen Fullstack Challenge
 [![CI Diagram](https://raw.githubusercontent.com/nezkal/mcfadyen/master/McFadyenCI.png)](https://raw.githubusercontent.com/nezkal/mcfadyen/master/McFadyenCI.png)
 
 
-How to install:
+## Documentation API Reference
+
+Oracle Apiary Documentation: [https://mcfadyenchallenge.docs.apiary.io](https://mcfadyenchallenge.docs.apiary.io)
+
+# How to install:
 
 ## Maven
 
