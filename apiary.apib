@@ -1,80 +1,96 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://localhost:8080
 
-# McFadyen Challenge
+# McFadyen Fullstack Challenge
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Documentation about API McFadyen Fullstack Challenge
 
-## Questions Collection [/questions]
+## Products [/questions]
 
-### List All Questions [GET]
+### List All [GET]
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "id": 1,
+                "name": "Apple IPhone XS",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                "price": 999
+            },
+            {
+                "id": 2,
+                "name": "Apple IPhone XS Max",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXSmax_large.jpg",
+                "price": 1299
+            },
+            {
+                "id": 3,
+                "name": "Apple IPhone XR",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXR_large.jpg",
+                "price": 799
             }
         ]
 
-### Create a New Question [POST]
+## Shopping Cart [/shoppingcart]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### Current [GET]
 
-+ Request (application/json)
++ Response 200 (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "commerceItems": [
+                {
+                    "id": 0,
+                    "product": {
+                        "id": 1,
+                        "name": "Apple IPhone XS",
+                        "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                        "price": 999
+                    },
+                    "quantity": 4,
+                    "amount": 3996
+                }
+            ],
+            "amount": 3996
         }
 
-+ Response 201 (application/json)
+## Commerce Items [/shoppingcart/items]
 
-    + Headers
+### Add a product to Shopping Cart [POST]
 
-            Location: /questions/2
++ Request (x-www-form-urlencoded)
+
+        product_id: 1
+        quantity: 2
+
++ Response 200 (application/json)
 
     + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
+               {
+                    "id": 0,
+                    "product": {
+                        "id": 1,
+                        "name": "Apple IPhone XS",
+                        "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                        "price": 999
+                    },
+                    "quantity": 2,
+                    "amount": 1899
+                }
+## Commerce Item [/shoppingcart/items/{id}]                
+### Delete a Commerce Item [DELETE]
++ Response 200 (application/json)
+
+           {
+                "id": 0,
+                "product": {
+                    "id": 1,
+                    "name": "Apple IPhone XS",
+                    "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                    "price": 999
+                },
+                "quantity": 2,
+                "amount": 1899
             }
