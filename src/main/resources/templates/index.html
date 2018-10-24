@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>McFadyen FS Challenge</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class='container' id="root" style="display: none" data-bind="visible: true">
+    <hr/>
+    <img src="https://mcfadyen.com/wp-content/uploads/2017/01/logo-mcfadyen-digital.png" />
+    <hr/>
+    <div class="row">
+        <div class='col col-7'>
+            <ul class="list-unstyled product-list" data-bind="foreach: products">
+                <li class="text-center">
+                    <img data-bind="attr: {src: image}" />
+                    <div >
+                        <hr/>
+                        <span data-bind="text: name"></span> <br/>
+                        <span class="small text-primary" data-bind="text: $parent.formatCurrency(price)"></span> <br/> <br/>
+                        <button class="btn btn-primary btn-sm" data-bind="click: $parent.addToCart.bind($data)">Add to cart</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class='col col-5'>
+            <h4>Shopping Cart</h4>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+                <tbody data-bind="foreach: commerceItems">
+                    <tr>
+                        <td>
+                            <span data-bind="text: $data.product.name"></span>
+                        </td>
+                        <td>
+                            <span title="Quantity" class="strong" data-bind="text: $data.quantity"></span>
+                        </td>
+                        <td class="text-right">
+                            <span data-bind="text: $parent.formatCurrency($data.amount)"></span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-outline-danger btn-xm pull-right" data-bind="click: $parent.removeItem.bind($data)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total: </td>
+                        <td colspan="2" data-bind="if: cart() !=  null" class="text-right">
+                            <strong data-bind="text: formatCurrency(cart().amount)"></strong>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

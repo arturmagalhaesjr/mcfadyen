@@ -1,0 +1,10 @@
+version: '3'
+services:
+  storefront:
+    image: nezkal/mc_challenge
+    ports:
+      - 8080:8080
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s

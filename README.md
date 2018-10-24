@@ -1,4 +1,4 @@
-McFadyen Fullstack Challenge - Backend
+McFadyen Fullstack Challenge
 ==========
 
 
@@ -22,7 +22,22 @@ System requirements:
 
 This project will execute on localhost:8080
 
-## Docker
+## Docker Compose / Docker Swarm
+
+You can run this app with Docker Compose or Docker Swarm as well:
+
+Compose
+
+``` docker-compose up -d ```
+
+Swarm
+``` bash 
+docker swarm init
+docker stack deploy --compose-file=docker-compose.yml
+```
+
+
+## Docker Build Image
 
 System requirements:
 > Docker

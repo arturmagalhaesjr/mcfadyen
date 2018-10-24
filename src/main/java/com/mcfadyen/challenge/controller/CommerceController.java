@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @SessionAttributes("shoppingCart")
 public class CommerceController {
 
@@ -23,16 +24,19 @@ public class CommerceController {
         this.productRepository = repository;
     }
 
+    @CrossOrigin
     @GetMapping("/products")
     List<Product> getProducts (HttpSession session) {
         return this.productRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/shoppingcart")
     ShoppingCart getShoppingCart (@ModelAttribute("shoppingCart") ShoppingCart cart, HttpSession session) {
         return this.handleCart(cart);
     }
 
+    @CrossOrigin
     @PostMapping("/shoppingcart/items")
     CommerceItem addItem (@ModelAttribute("shoppingCart") ShoppingCart cart, @RequestParam Long product_id, @RequestParam int quantity, HttpSession session) throws Exception {
         CommerceItem commerceItem = new CommerceItem();
@@ -44,12 +48,14 @@ public class CommerceController {
         return cart.addCommerceItem(commerceItem);
     }
 
+    @CrossOrigin
     @DeleteMapping("/shoppingcart/items/{id}")
     CommerceItem deleteItem (@ModelAttribute("shoppingCart") ShoppingCart cart, @PathVariable int id, HttpSession session) throws Exception {
         cart = handleCart(cart);
         return cart.removeCommerceItemById(id);
     }
 
+    @CrossOrigin
     @ModelAttribute("shoppingCart")
     public ShoppingCart setUpCart () {
         return new ShoppingCart();

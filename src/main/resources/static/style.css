@@ -1,0 +1,12 @@
+.product-list  {
+    margin: 40px 0;
+    clear: both;
+}
+.product-list li {
+    float: left;
+    margin: 10px 20px;
+}
+
+.product-list img {
+    height: 211px;
+}
