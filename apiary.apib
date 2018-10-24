@@ -1,0 +1,96 @@
+FORMAT: 1A
+HOST: http://localhost:8080
+
+# McFadyen Fullstack Challenge
+
+Documentation about API McFadyen Fullstack Challenge
+
+## Products [/products]
+
+### List All [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Apple IPhone XS",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                "price": 999
+            },
+            {
+                "id": 2,
+                "name": "Apple IPhone XS Max",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXSmax_large.jpg",
+                "price": 1299
+            },
+            {
+                "id": 3,
+                "name": "Apple IPhone XR",
+                "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXR_large.jpg",
+                "price": 799
+            }
+        ]
+
+## Shopping Cart [/shoppingcart]
+
+### Current [GET]
+
++ Response 200 (application/json)
+
+        {
+            "commerceItems": [
+                {
+                    "id": 0,
+                    "product": {
+                        "id": 1,
+                        "name": "Apple IPhone XS",
+                        "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                        "price": 999
+                    },
+                    "quantity": 4,
+                    "amount": 3996
+                }
+            ],
+            "amount": 3996
+        }
+
+## Commerce Items [/shoppingcart/items]
+
+### Add a product to Shopping Cart [POST]
+
++ Request (x-www-form-urlencoded)
+
+        product_id: 1
+        quantity: 2
+
++ Response 200 (application/json)
+
+    + Body
+
+               {
+                    "id": 0,
+                    "product": {
+                        "id": 1,
+                        "name": "Apple IPhone XS",
+                        "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                        "price": 999
+                    },
+                    "quantity": 2,
+                    "amount": 1899
+                }
+## Commerce Item [/shoppingcart/items/{id}]                
+### Delete a Commerce Item [DELETE]
++ Response 200 (application/json)
+
+           {
+                "id": 0,
+                "product": {
+                    "id": 1,
+                    "name": "Apple IPhone XS",
+                    "image": "https://www.apple.com/v/iphone/compare/k/images/overview/all_models_iphoneXS_large.jpg",
+                    "price": 999
+                },
+                "quantity": 2,
+                "amount": 1899
+            }
