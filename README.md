@@ -37,7 +37,7 @@ Compose
 Swarm
 ``` bash 
 docker swarm init
-docker stack deploy --compose-file=docker-compose.yml
+docker deploy --compose-file=docker-compose.yml mcfadyen
 ```
 
 
